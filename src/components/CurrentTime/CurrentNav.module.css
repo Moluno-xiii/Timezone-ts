@@ -1,0 +1,27 @@
+
+
+:global(.active) {
+    background-color: pink;
+}
+
+.ul {
+    display: flex;
+    flex-direction: row;
+    width: 30vw;
+    justify-content: space-evenly;
+    text-align: center;
+    text-wrap: nowrap;
+}
+
+a {
+    padding: 1rem;
+    color: black;
+}
+
+/* .div {
+    display: flex;
+    flex-direction: column;
+    background-color: yellow;
+    align-items: center;
+    text-align: center;
+} */
