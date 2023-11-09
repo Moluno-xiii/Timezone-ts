@@ -1,5 +1,5 @@
 import React, { SetStateAction, Dispatch, useState } from "react";
-import Spinner from "../Spinner";
+import Spinner from "../Loader";
 // import Spinner from "../Spinner";
 
 interface Bool {
@@ -13,7 +13,6 @@ interface ipDataParam {
   day_of_year: number;
   timezone: string;
   datetime: string;
-
 }
 
 const IpAddress: React.FC<Bool> = ({ isLoading, setIsLoading }) => {
@@ -42,8 +41,8 @@ const IpAddress: React.FC<Bool> = ({ isLoading, setIsLoading }) => {
   const { datetime, day_of_week, day_of_year, timezone, abbreviation } =
     ipData as ipDataParam;
   const timestamp = new Date(datetime);
-  const date:string = timestamp.toLocaleDateString(); // Extract date
-  const time:string  = timestamp.toLocaleTimeString(); // Extract time
+  const date: string = timestamp.toLocaleDateString(); // Extract date
+  const time: string = timestamp.toLocaleTimeString(); // Extract time
 
   return (
     <div>
