@@ -86,4 +86,13 @@ a {
   }
 }
 
+.btn-fetch{
+  margin-top: 3rem;
+  padding: 1rem;
+  background-color: bisque;
+  border-radius: 10%;
+}
 
+.flex{
+  text-align: center;
+}

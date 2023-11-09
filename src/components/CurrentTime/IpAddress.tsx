@@ -16,9 +16,9 @@ interface ipDataParam {
 }
 
 const IpAddress: React.FC<Bool> = ({ isLoading, setIsLoading }) => {
-  const [ipData, setIPData] = useState<ipDataParam | string> ('');
+  const [ipData, setIPData] = useState<ipDataParam | string>("");
   const Base_url: string = "http://worldtimeapi.org/api/ip";
-  const tramp: boolean = false;
+  //   const tramp: boolean = false;
   // interface Post {
   //     id: string;
   // }
@@ -38,21 +38,29 @@ const IpAddress: React.FC<Bool> = ({ isLoading, setIsLoading }) => {
       setIsLoading(false);
     }
   }
-  const { datetime, day_of_week, day_of_year, timezone, abbreviation } = ipData as ipDataParam
+  const { datetime, day_of_week, day_of_year, timezone, abbreviation } =
+    ipData as ipDataParam;
+  const timestamp = new Date(datetime);
+  const date:string = timestamp.toLocaleDateString(); // Extract date
+  const time:string  = timestamp.toLocaleTimeString(); // Extract time
+
   return (
-    <div>
+    <div className="flex">
       {/* {tramp && <Spinner />} */}
       {isLoading && <p>Loading...</p>}
 
       {ipData && (
         <ul>
           <li>timezone : {`${abbreviation} ${timezone}`}</li>
-          <li>Your time : {datetime}</li>
+          <li>Your time : {time}</li>
+          <li>Your date : {date}</li>
           <li>Day of week : {day_of_week}</li>
           <li>Day of year : {day_of_year}</li>
         </ul>
       )}
-      <button onClick={fetchData}>Get Local time</button>
+      <button onClick={fetchData} className="btn-fetch">
+        Get Local time
+      </button>
     </div>
   );
 };
