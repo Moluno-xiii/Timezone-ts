@@ -68,15 +68,16 @@ a {
 }
 
 .loading-spinner{
-  width: 4rem;
+  /* width: 4rem;
   height: 4rem;
   border-radius: 40%;
   border: .4rem solid red;
   border-top: .4 solid #0d0d0d;
-  animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite; */
+  text-align: center;
 }
 
-@keyframes spin{
+/* @keyframes spin{
   0%{
     transform: rotate(0deg);
   }
@@ -84,10 +85,9 @@ a {
   100%{
     transform: rotate(360deg);
   }
-}
+} */
 
 .btn-fetch{
-  margin-top: 3rem;
   padding: 1rem;
   background-color: bisque;
   border-radius: 10%;
@@ -95,4 +95,8 @@ a {
 
 .flex{
   text-align: center;
+}
+
+.ip-list li{
+  padding-top: 1rem;
 }

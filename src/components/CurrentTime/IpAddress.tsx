@@ -1,4 +1,5 @@
 import React, { SetStateAction, Dispatch, useState } from "react";
+import Spinner from "../Spinner";
 // import Spinner from "../Spinner";
 
 interface Bool {
@@ -45,12 +46,12 @@ const IpAddress: React.FC<Bool> = ({ isLoading, setIsLoading }) => {
   const time:string  = timestamp.toLocaleTimeString(); // Extract time
 
   return (
-    <div className="flex">
+    <div>
       {/* {tramp && <Spinner />} */}
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Spinner />}
 
       {ipData && (
-        <ul>
+        <ul className="ip-list">
           <li>timezone : {`${abbreviation} ${timezone}`}</li>
           <li>Your time : {time}</li>
           <li>Your date : {date}</li>
@@ -58,9 +59,11 @@ const IpAddress: React.FC<Bool> = ({ isLoading, setIsLoading }) => {
           <li>Day of year : {day_of_year}</li>
         </ul>
       )}
-      <button onClick={fetchData} className="btn-fetch">
-        Get Local time
-      </button>
+      <div className="flex">
+        <button onClick={fetchData} className="btn-fetch">
+          Get Local time
+        </button>
+      </div>
     </div>
   );
 };
