@@ -5,11 +5,14 @@ import { allZones } from "../../misc/array";
 
 
 const AutomaticTimeZone: React.FC = () => {
-  const [zone, setZone] = useState<string | null>(null);
+  const [zone, setZone] = useState<string | null>('');
+  const [zoneData, setZoneData] = useState<string | null>('');
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-const fetch_url: string = `https://timeapi.io/api/Time/current/zone?timeZone=${zone}`;
+// const fetch_url: string = `https://timeapi.io/api/Time/current/zone?timeZone=${zone}`;
+
+const fetch_url = 'https://timeapi.io/api/TimeZone/zone?timeZone=Europe/Amsterdam'
 
   useEffect(() => {
     async function fetchData() {
@@ -20,6 +23,7 @@ const fetch_url: string = `https://timeapi.io/api/Time/current/zone?timeZone=${z
           throw new Error("Failed to fetch data");
         }
         const data = await response.json();
+        setZoneData(data)
         console.log(data)
       } catch (err : any) {
         setError(err.toString());
@@ -29,11 +33,17 @@ const fetch_url: string = `https://timeapi.io/api/Time/current/zone?timeZone=${z
       }
     }
     fetchData()
-  }, []);
+  }, [zone, fetch_url]);
+
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+setZone(e.target.value)
+console.log(e.target.value)
+  }
   return (
     <form>
-      <input type="text" />
-      <select name="timezone" value="">
+      {/* <input type="text" /> */}
+      <select name="timezone" value  ={zone || ''} onChange={handleChange}>
         {allZones.map((zone, index) => (
             <option value={zone} key={index}>
                 {zone}
