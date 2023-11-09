@@ -18,7 +18,7 @@ const defaultZoneData: zoneDataParam = {
 };
 
 const AutomaticTimeZone: React.FC = () => {
-  const [zone, setZone] = useState<string | null>("Africa/Abidjan");
+  const [zone, setZone] = useState<string | null>("");
   const [zoneData, setZoneData] = useState<zoneDataParam>(defaultZoneData);
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -45,7 +45,7 @@ const AutomaticTimeZone: React.FC = () => {
         });
         console.log(zoneData.hasDayLightSaving);
         console.log(zoneData);
-        // console.log(data.contents);
+        console.log(data.contents);
       } catch (err: any) {
         setError(err.toString());
         console.error(err);
@@ -54,7 +54,10 @@ const AutomaticTimeZone: React.FC = () => {
       }
     }
     fetchData();
-  }, [zone, fetch_url,]);
+  }, [zone,fetch_url]);
+
+ 
+
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setZone(e.target.value);
