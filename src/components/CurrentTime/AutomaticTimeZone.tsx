@@ -31,8 +31,6 @@ const AutomaticTimeZone: React.FC = () => {
 
   const fetch_url: string = `http://worldtimeapi.org/api/timezone/${zone}`;
 
-  // const fetch_url = `https://api.allorigins.win/get?url=https://timeapi.io/api/TimeZone/zone?timeZone=${zone}`;
-
   useEffect(() => {
     async function fetchData() {
       try {
@@ -42,7 +40,7 @@ const AutomaticTimeZone: React.FC = () => {
           throw new Error("Failed to fetch data");
         }
         const resData = await response.json();
-        // const data = JSON.parse(resData.contents);
+
         setZoneData({
           abbreviation: resData.abbreviation,
           datetime: resData.datetime,
@@ -52,11 +50,7 @@ const AutomaticTimeZone: React.FC = () => {
           day_of_year: resData.day_of_year,
           client_ip: resData.client_ip,
         });
-        // console.log(zoneData.hasDayLightSaving);
-        // console.log(zoneData);
-        // console.log(data.contents);
       } catch (err: any) {
-
         setError(err.toString());
         console.error(err);
       } finally {
@@ -64,7 +58,7 @@ const AutomaticTimeZone: React.FC = () => {
       }
     }
     fetchData();
-  }, [zone,fetch_url]);
+  }, [zone, fetch_url]);
 
   const fetchZones = async () => {
     try {
@@ -75,7 +69,6 @@ const AutomaticTimeZone: React.FC = () => {
         throw new Error("Failed to fetch data");
       }
       const resData = await response.json();
-      // const data = JSON.parse(resData.contents);
       setZoneData({
         abbreviation: resData.abbreviation,
         datetime: resData.datetime,
@@ -113,31 +106,18 @@ const AutomaticTimeZone: React.FC = () => {
 
   const timestamp = new Date(datetime);
   const date: string = timestamp.toLocaleDateString();
-  // const time: string = timestamp.toLocaleTimeString();
 
   const time: string = datetime.slice(11, 19);
 
-
-
-  // const convTime = (time): string => {
-  //   const food: number = time.slice(0, 2);
-
-  //   if (food >= 12) {
-  //      console.log(time);
-  //     return `${time}PM`;
-  //   } else {
-  //      console.log(time);
-  //     return `${time}AM`;
-  //   }
-
-  // };
-
   const convTime = (time): string => {
     const [hour, minute, second] = time.split(":");
-    const hour12 = hour > 12 ? hour - 12 : hour;
-    const format = hour12 < 12 && hour != 0 ? "PM" : "AM";
+    const hour12 = hour >= 12 ? hour - 12 : hour;
+    const format : string = hour < 12 ? "AM" : "PM";
+    // switch (hour12) {
+    //   case hour12 >= 12: return format = "am";
+
+
     const finalTime = `${hour12}:${minute}:${second} ${format}`;
-    // console.log(finalTime);
 
     return finalTime;
   };
@@ -164,13 +144,10 @@ const AutomaticTimeZone: React.FC = () => {
           <p>Date: {date}</p>
           <p>Time zone: {timezone}</p>
           <p>week number: {week_number}</p>
-          <p>
-            Abbreviation: {abbreviation}
-          </p>
+          <p>Abbreviation: {abbreviation}</p>
           <p>Your IP address : {client_ip}</p>
           <p>Day of week : {day_of_week}</p>
           <p>Day of year : {day_of_year}</p>
-          {/* <p>Is Daylight saving active:{zoneData.isDayLightSavingActive}</p> */}
         </div>
       )}
 
