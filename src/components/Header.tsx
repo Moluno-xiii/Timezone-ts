@@ -2,11 +2,11 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 const Header: React.FC = () => {
     return (
-        <nav>
+        <button className='header-nav'>
             <NavLink to="/">
                 HOMEPAGE
             </NavLink>
-        </nav>
+        </button>
     )
 }
 

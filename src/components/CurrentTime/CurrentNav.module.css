@@ -22,15 +22,17 @@
   color: #333;
 }
 
+#ul li:hover {
+  background-color: black ;
+  color: indianred;
+  transition: 0.4s;
+}
 #ul li a:hover {
-  background-color: #333;
   color: indianred;
   transition: 0.4s;
 }
 
-
-
-@media all and (width <= 600px) {
+@media all and (min-width : 300px) and (max-width : 599px) {
   #ul {
     display: flex;
     flex-direction: column;
@@ -48,7 +50,17 @@
     padding: 1rem;
   }
 }
-@media all and (width >= 601px) {
 
+@media all and (min-width : 600px) and (max-width: 768px) {
+#ul{
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: space-evenly;
+}
+/* .btn button{
+  background-color: pink;
+  width: 100rem;
+} */
 
 }
