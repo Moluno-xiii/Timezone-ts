@@ -21,7 +21,7 @@ h1 {
 body {
   font-size: 2rem;
   text-transform: capitalize;
-  overflow: hidden;
+  /* overflow: hidden; */
   margin: 0;
   padding: 0;
 }
@@ -32,7 +32,7 @@ ul li {
 
 a {
   text-decoration: none;
-  color: blue;
+  color: black;
 }
 
 .not-found {
@@ -82,8 +82,11 @@ a {
 
 .btn-fetch {
   padding: 1rem;
-  background-color: bisque;
-  border-radius: 10%;
+  background-color: #123;
+  border-radius: .5rem;
+  color: white;
+  text-align: center;
+  border: 1px solid #123;
 }
 
 .flex {
@@ -93,3 +96,23 @@ a {
 .ip-list li {
   padding-top: 1rem;
 }
+
+.ip-list > :last-child {
+  margin-bottom: 2rem;
+}
+
+.ip-address{
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  height: 30rem;
+
+  text-align: center;
+  align-items: center;
+  background-color: white;
+  box-shadow:  -5px 1rem 3rem rgba(0, 0, 0, 0.6);
+}
+
+

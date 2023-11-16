@@ -6,12 +6,12 @@ const CurrentNav: React.FC = () => {
   return (
     <div className={styles.div}>
       <nav className={styles.navigation}>
-        <ul className={styles.ul}>
+        <ul id={styles.ul}>
           <li className="btn">
             <NavLink to="ip address">Use IP Address</NavLink>
           </li>
           <li className="btn">
-            <NavLink to="coordinates">Use Coordinates</NavLink>
+            <NavLink to="coordinates" >Use Coordinates</NavLink>
           </li>
           <li className="btn">
             <NavLink to="automatically">Automatically</NavLink>

@@ -45,11 +45,11 @@ const IpAddress: React.FC<Bool> = ({ isLoading, setIsLoading }) => {
   const time: string = timestamp.toLocaleTimeString(); // Extract time
 
   return (
-    <div>
+    <div className="ip-address">
       {/* {tramp && <Spinner />} */}
       {isLoading && <Spinner />}
 
-      {ipData && (
+      {ipData && !isLoading && (
         <ul className="ip-list">
           <li>timezone : {`${abbreviation} ${timezone}`}</li>
           <li>Your time : {time}</li>
@@ -58,11 +58,11 @@ const IpAddress: React.FC<Bool> = ({ isLoading, setIsLoading }) => {
           <li>Day of year : {day_of_year}</li>
         </ul>
       )}
-      <div className="flex">
+      {/* <div> */}
         <button onClick={fetchData} className="btn-fetch">
           Get Local time
         </button>
-      </div>
+      {/* </div> */}
     </div>
   );
 };
