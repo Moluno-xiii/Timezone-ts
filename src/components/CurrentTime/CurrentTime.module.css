@@ -4,6 +4,10 @@
     align-items: center;
 }
 
+.main h1{
+    color: #333;
+}
+
 @media all and (min-width : 300px) and (max-width : 599px) {
    .main h1{
  font-size: 2rem;
